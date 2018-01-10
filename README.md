@@ -19,13 +19,14 @@
 1. 当线程数已经达到maxPoolSize，切队列已满，会拒绝新任务。
 2. 当线程池被调用shutdown()后，会等待线程池里的任务执行完毕，再shutdown。如果在调用shutdown()和线程池真正shutdown之间提交任务，会拒绝新任务。
 ### 线程池会调用rejectedExecutionHandler来处理拒绝的任务。如果没有设置默认是AbortPolicy，会抛出异常。
-#### hreadPoolExecutor类有几个内部实现类来处理这类情况：
-- AbortPolicy 丢弃任务，抛运行时异常
-- CallerRunsPolicy 执行任务
-- DiscardPolicy 忽视，什么都不会发生
-- DiscardOldestPolicy 从队列中踢出最先进入队列（最后一个执行）的任务
-- 实现RejectedExecutionHandler接口，可自定义处理器
+#### ThreadPoolExecutor类有几个内部实现类来处理这类情况：
+- AbortPolicy 丢弃任务，抛运行时异常。
+- CallerRunsPolicy 用调用者所在线程来运行任务。
+- DiscardPolicy 不处理，丢弃掉。
+- DiscardOldestPolicy 从队列中踢出最先进入队列（最后一个执行）的任务，并执行当前任务。
+- 实现RejectedExecutionHandler接口，可自定义处理器。
 
 ## Refer
 - [Spring Boot中使用@Async实现异步调用](http://blog.didispace.com/springbootasync/)
 - [spring boot-执行Async任务时，使用自定义的线程池](http://blog.csdn.net/liuchuanhong1/article/details/64132520)
+- [线程池优雅停机(应用停止时的线程池处理)](http://blog.sina.com.cn/s/blog_7d1968e20102x1x4.html)
