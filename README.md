@@ -6,7 +6,7 @@
     - test()：doTaskOne、doTaskTwo、doTaskThree三个函数，同时异步运行，各自运行在独立的线程中。
     - test2()：通过独立线程执行doTaskFour函数，且实现参数传入与结果返回。
 - AsyncTaskInPoolTest：基于线程池的异步线程测试
-    - AsyncTaskTest()：基于线程池管理，测试异步线程。（线程池配置文件：taskPool.properties）
+    - test()：基于线程池管理，测试异步线程。（线程池配置文件：taskPool.properties）
 ## 原理解释
 ### 当一个任务被添加到线程池时：
 1. 如果此时线程池中的数量小于corePoolSize，即使线程池中的线程都处于空闲状态,也要创建新的线程来处理被添加的任务。

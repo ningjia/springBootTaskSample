@@ -26,7 +26,7 @@ public class AsyncTaskInPoolTest {
      * @throws ExecutionException
      */
     @Test
-    public void AsyncTaskTest() throws InterruptedException, ExecutionException {
+    public void test() throws InterruptedException, ExecutionException {
         for (int i = 0; i < 100; i++) {
             asyncTaskPool.doTask1(i);
         }

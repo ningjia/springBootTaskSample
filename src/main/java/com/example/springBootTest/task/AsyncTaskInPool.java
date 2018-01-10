@@ -14,7 +14,7 @@ public class AsyncTaskInPool {
 
     public static Random random =new Random();
 
-    @Async("myAsynTaskcPool")  //myTaskAsynPool即配置线程池的方法名，此处如果不写自定义线程池的方法名，会使用默认的线程池
+    @Async
     public void doTask1(int i) throws InterruptedException{
         long start = System.currentTimeMillis();
         Thread.sleep(random.nextInt(1000));
