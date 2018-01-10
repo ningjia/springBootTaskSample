@@ -1,7 +1,6 @@
 package com.example.springBootTest.task;
 
 import com.example.springBootTest.Application;
-import com.example.springBootTest.task.AsyncTaskInPool;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -28,11 +27,10 @@ public class AsyncTaskInPoolTest {
      */
     @Test
     public void AsyncTaskTest() throws InterruptedException, ExecutionException {
-
         for (int i = 0; i < 100; i++) {
             asyncTaskPool.doTask1(i);
         }
-
+        Thread.sleep(1000);//为确保所有子线程都执行完毕后，再关闭主线程，故在此处设置一个等待时间
         logger.info("All tasks finished.");
     }
 

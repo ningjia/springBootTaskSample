@@ -3,6 +3,8 @@ package com.example.springBootTest.task;
 import com.example.springBootTest.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -12,6 +14,9 @@ import java.util.concurrent.Future;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 public class AsyncTaskTest {
+
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private AsyncTask asyncTask;
 
@@ -35,7 +40,7 @@ public class AsyncTaskTest {
             Thread.sleep(1000);
         }
         long end = System.currentTimeMillis();
-        System.out.println("任务全部完成，总耗时：" + (end - start) + "毫秒");
+        logger.info("任务全部完成，总耗时：" + (end - start) + "毫秒");
     }
 
     /**
@@ -47,9 +52,9 @@ public class AsyncTaskTest {
         long start = System.currentTimeMillis();
         //调用异步任务
         Future<String> task4 = asyncTask.doTaskFour("测试参数");
+        String result = task4.get();
         //输出处理结果
-        System.out.println("任务全部完成，处理结果："+task4.get());
         long end = System.currentTimeMillis();
-        System.out.println("任务全部完成，总耗时：" + (end - start) + "毫秒");
+        logger.info("任务全部完成，总耗时：" + (end - start) + "毫秒，处理结果："+result);
     }
 }

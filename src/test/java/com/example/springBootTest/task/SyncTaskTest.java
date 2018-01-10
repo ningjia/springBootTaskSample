@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+/**
+ * 测试同步任务
+ * doTaskOne、doTaskTwo、doTaskThree三个函数，顺序的执行完成
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 public class SyncTaskTest {
