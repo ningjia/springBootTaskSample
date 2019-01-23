@@ -25,6 +25,10 @@
 - DiscardPolicy 不处理，丢弃掉。
 - DiscardOldestPolicy 从队列中踢出最先进入队列（最后一个执行）的任务，并执行当前任务。
 - 实现RejectedExecutionHandler接口，可自定义处理器。
+## 其他注意事项
+异步任务的方法，与调用它的方法，不能在一个类中。
+
+原因：与spring对@Transactional注解时也有类似问题，spring扫描时具有@Transactional注解方法的类时，是生成一个代理类，由代理类去开启关闭事务，而在同一个类中，方法调用是在类体内执行的，spring无法截获这个方法调用。
 
 ## Refer
 - [Spring Boot中使用@Async实现异步调用](http://blog.didispace.com/springbootasync/)
